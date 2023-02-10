@@ -1,29 +1,29 @@
-function type(data) {
-  return Object.prototype.toString.call(data).slice(8, -1).toLowerCase()
-}
+import { type } from "./type.js";
 
 
+Array.from('abc') // ['a', 'b', 'c']
 
-function clone(info){
-  const t=type(source);
-  if(t!=='object'&& t!=='array'){
-    return info
-  }
-
-  let target;
-  if(t=='object'){
-    target={};
-    for(let i in info){
-      if(info.hasOwnProperty(i)){
-        target[i]=clone(info[i])
-      }
+export function clone(source) {
+    const t = type(source);
+    if (t !== "object" && t !== "array") {
+        return source;
     }
-  }else{
-    target=[];
-    for(let i=0;i<info.length;i++){
-      target[i]=clone(info[i])
-    }
-  }
 
-  return target
+    let target;
+
+    if (t === "object") {
+        target = {};
+        for (let i in source) {
+            if (source.hasOwnProperty(i)) {
+                target[i] = clone(source[i]); // 注意这里
+            }
+        }
+    } else {
+        target = [];
+        for (let i = 0; i < source.length; i++) {
+            target[i] = clone(source[i]); // 注意这里
+        }
+    }
+
+    return target;
 }
