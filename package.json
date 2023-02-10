@@ -1,8 +1,9 @@
 {
-  "name": "clone",
-  "version": "1.0.0",
+  "name": "xiclone",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "directories": {
     "lib": "lib"
   },
@@ -13,9 +14,16 @@
     "build": "npm run build:self && npm run build:esm && npm run build:aio",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/coderXixi/utilClone.git"
+  },
+  "publishConfig": {
+    "repository": "https://registry.npmjs.org",
+    "access": "public"
   },
   "keywords": [],
   "author": "",
@@ -25,7 +33,18 @@
   },
   "homepage": "https://github.com/coderXixi/utilClone#readme",
   "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
     "rollup": "^0.57.1",
+    "rollup-plugin-babel": "^4.0.3",
+    "rollup-plugin-commonjs": "^8.3.0",
     "rollup-plugin-node-resolve": "^3.0.3"
+  },
+  "dependencies": {
+    "@babel/runtime-corejs2": "^7.12.5",
+    "@babel/runtime-corejs3": "^7.12.5",
+    "core-js": "^3.7.0",
+    "xiclone": "^1.0.1"
   }
 }

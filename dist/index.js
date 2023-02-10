@@ -1,9 +1,12 @@
-import { type } from "./type.js";
+'use strict';
 
-import { clone } from "clone";
-Array.from('abc') // ['a', 'b', 'c']
+Object.defineProperty(exports, '__esModule', { value: true });
 
-export function clone(source) {
+function type(data) {
+  return Object.prototype.toString.call(data).slice(8, -1).toLowerCase()
+}
+
+function clone(source) {
     const t = type(source);
     if (t !== "object" && t !== "array") {
         return source;
@@ -27,3 +30,5 @@ export function clone(source) {
 
     return target;
 }
+
+exports.clone = clone;
